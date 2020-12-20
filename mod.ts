@@ -1,5 +1,6 @@
 import * as TC16 from './color16.ts'
 import * as TC256 from './color256.ts'
+export * from './types.ts'
 
 export const termcolor =
 {
