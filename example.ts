@@ -1,16 +1,4 @@
-# termcolor
-Terminal color.
-
-## example
-
-```
-deno run example.ts
-```
-
-or
-
-```
-import { termcolor } from 'https://github.com/Azulamb/termcolor/raw/main/mod.ts'
+import { termcolor } from './mod.ts'
 
 const block = '▄▀';
 
@@ -41,4 +29,3 @@ for ( let i = 0 ; i < 256 ; )
     if ( ++i % 16 === 0 ) { console.log( c256.reset ); }
 }
 console.log( c256.reset );
-```
