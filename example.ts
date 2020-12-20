@@ -29,3 +29,11 @@ for ( let i = 0 ; i < 256 ; )
     if ( ++i % 16 === 0 ) { console.log( c256.reset ); }
 }
 console.log( c256.reset );
+
+const c = ( new termcolor.tc256() ).colors();
+for ( let i = 0 ; i < 256 ; )
+{
+    Deno.stdout.writeSync( ( new TextEncoder() ).encode( `${ c256.back[ i ] } \x1b[48;2;${ c[ i ].r  };${ c[ i ].g };${ c[ i ].b }m ` ) );
+    if ( ++i % 16 === 0 ) { console.log( c256.reset ); }
+}
+console.log( c256.reset );
