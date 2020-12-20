@@ -9,7 +9,7 @@ deno run example.ts
 
 or
 
-```
+```js
 import { termcolor } from 'https://github.com/Azulamb/termcolor/raw/main/mod.ts'
 
 const block = '▄▀';
