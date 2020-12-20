@@ -32,8 +32,8 @@ export class TermColor implements TerminalColor
         {
             this.table.push(
             {
-                r: ( ( color >> 4 ) & 0xFF ),
-                g: ( ( color >> 2 ) & 0xff ),
+                r: ( ( color >> 16 ) & 0xFF ),
+                g: ( ( color >> 8 ) & 0xff ),
                 b: ( color & 0xff ),
                 back: `${prefix}48;5;${ index }m`,
                 front: `${prefix}38;5;${ index }m`,
