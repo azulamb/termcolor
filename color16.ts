@@ -1,4 +1,6 @@
-import { TerminalColorTable, TerminalColor } from './types.ts';
+import { TerminalColor } from './types.ts';
+
+type ColorNames = 'black' | 'maroon' | 'green' | 'olive' | 'navy' | 'purple' | 'teal' | 'silver' | 'gray' | 'red' | 'lime' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
 
 export class TermColor implements TerminalColor
 {
@@ -32,6 +34,30 @@ export class TermColor implements TerminalColor
         } );
     }
 
+    public nameToNumber( name: ColorNames )
+    {
+        for ( let i = 0 ; i < this.table.length ; ++i )
+        {
+            if ( this.table[ i ].name === name ) { return i; }
+        }
+        return -1;
+    }
+
+    public nameToCode( name: ColorNames )
+    {
+        for ( let i = 0 ; i < this.table.length ; ++i )
+        {
+            const color = this.table[ i ];
+            if ( color.name === name )
+            {
+                return color.r.toString( 16 ).padStart( 2, '0' ) +
+                    color.g.toString( 16 ).padStart( 2, '0' ) +
+                    color.b.toString( 16 ).padStart( 2, '0' );
+            }
+        }
+        return '';
+    }
+
     public colors() { return this.table.map( ( color ) => { return { r: color.r, g: color.g, b: color.b }; } ); }
 
     public terminalColors()
@@ -62,8 +88,8 @@ export class TermColor implements TerminalColor
             const code = color.r.toString( 16 ).padStart( 2, '0' ) +
                 color.g.toString( 16 ).padStart( 2, '0' ) +
                 color.b.toString( 16 ).padStart( 2, '0' );
-            back[ code ] = color.back;
-            front[ code ] = color.front;
+            back[ code ] = back[ color.name ] = color.back;
+            front[ code ] = front[ color.name ] = color.front;
         } );
 
         return {
